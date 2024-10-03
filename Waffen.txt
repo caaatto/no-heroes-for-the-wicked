@@ -1,1 +1,11 @@
-Stuhlbein	1d6	Str
+Stuhlbein 1d6 Str
+Krug 1d4 Dex
+Tischbein 1d6 Str
+Glasflasche 1d4 Dex
+kaputte_Türe 1d8 Str
+Kettenpeitsche 1d6 Dex
+Hufeisen 1d4 Dex
+Kerze 2d4 Wis
+rostiges_Schwert 1d8 Str
+Hammer 1d6 Str
+laute_Stimme 1d2 Chr
