@@ -1,4 +1,4 @@
-﻿namespace No_Heroes_for_the_wicked
+﻿namespace NHFTW
 {
     internal class Program
     {

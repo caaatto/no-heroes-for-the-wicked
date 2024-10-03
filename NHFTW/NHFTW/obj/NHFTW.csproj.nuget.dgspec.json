@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\GameManager\\GameManager\\GameManager.csproj": {}
+    "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\NHFTW\\NHFTW\\NHFTW.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\GameManager\\GameManager\\GameManager.csproj": {
+    "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\NHFTW\\NHFTW\\NHFTW.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\GameManager\\GameManager\\GameManager.csproj",
-        "projectName": "GameManager",
-        "projectPath": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\GameManager\\GameManager\\GameManager.csproj",
+        "projectUniqueName": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\NHFTW\\NHFTW\\NHFTW.csproj",
+        "projectName": "NHFTW",
+        "projectPath": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\NHFTW\\NHFTW\\NHFTW.csproj",
         "packagesPath": "C:\\Users\\amke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\GameManager\\GameManager\\obj\\",
+        "outputPath": "C:\\Users\\amke\\source\\repos\\no-heroes-for-the-wicked\\NHFTW\\NHFTW\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\amke\\AppData\\Roaming\\NuGet\\NuGet.Config",

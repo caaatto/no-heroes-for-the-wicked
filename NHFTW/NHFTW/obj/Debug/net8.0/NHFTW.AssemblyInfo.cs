@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("GameManager")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("NHFTW")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20af1d49cacd7c55530bdc28ec909a508fbd6533")]
-[assembly: System.Reflection.AssemblyProductAttribute("GameManager")]
-[assembly: System.Reflection.AssemblyTitleAttribute("GameManager")]
+[assembly: System.Reflection.AssemblyProductAttribute("NHFTW")]
+[assembly: System.Reflection.AssemblyTitleAttribute("NHFTW")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Von der MSBuild WriteCodeFragment-Klasse generiert.
