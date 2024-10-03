@@ -10,3 +10,11 @@ rostiges_Schwert 1d8 Str
 Hammer 1d6 Str
 laute_Stimme 1d2 Chr
 Morgenstern 1d8 Str
+Bartschlüssel 2d2 Dex
+Fassdeckel 1d4 Str
+Eiseneimer 1d6 Str
+Heugabel 1d6 Str
+Mistgabel 1d6 Str
+Sense 1d6 Chr
+Öllampe 2d4 Str
+Kleines_Kind_Am_Fuss_gepackt 1d8 Str
