@@ -1,0 +1,171 @@
+{
+  "weapons": [
+    {
+      "id": "stuhlbein",
+      "name": "Stuhlbein",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein abgebrochenes Stuhlbein - improvisiert aber effektiv",
+      "rarity": "common"
+    },
+    {
+      "id": "krug",
+      "name": "Krug",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Ein schwerer Bierkrug aus der Taverne",
+      "rarity": "common"
+    },
+    {
+      "id": "tischbein",
+      "name": "Tischbein",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein massives Tischbein - besser als nichts",
+      "rarity": "common"
+    },
+    {
+      "id": "glasflasche",
+      "name": "Glasflasche",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Eine leere Glasflasche zum Werfen",
+      "rarity": "common"
+    },
+    {
+      "id": "kaputte_tuere",
+      "name": "Kaputte Türe",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Eine ausgehängte Tür - unhandlich aber kraftvoll",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "kettenpeitsche",
+      "name": "Kettenpeitsche",
+      "damage_dice": "1d6",
+      "damage_stat": "Dex",
+      "description": "Eine schwere Kette mit improvisierten Griffen",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "hufeisen",
+      "name": "Hufeisen",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Ein schweres Hufeisen zum Werfen",
+      "rarity": "common"
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "damage_dice": "2d4",
+      "damage_stat": "Wis",
+      "description": "Eine brennende Kerze - Feuer fügt zusätzlichen Schaden zu",
+      "rarity": "uncommon",
+      "element": "fire"
+    },
+    {
+      "id": "rostiges_schwert",
+      "name": "Rostiges Schwert",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Ein altes, rostiges Schwert - immer noch tödlich",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "hammer",
+      "name": "Hammer",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein schwerer Schmiedehammer",
+      "rarity": "common"
+    },
+    {
+      "id": "laute_stimme",
+      "name": "Laute Stimme",
+      "damage_dice": "1d2",
+      "damage_stat": "Chr",
+      "description": "Beleidigungen und Schreie - psychischer Schaden",
+      "rarity": "common",
+      "damage_type": "psychic"
+    },
+    {
+      "id": "morgenstern",
+      "name": "Morgenstern",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Eine brutale Streitwaffe mit Stacheln",
+      "rarity": "rare"
+    },
+    {
+      "id": "bartschluessel",
+      "name": "Bartschlüssel",
+      "damage_dice": "2d2",
+      "damage_stat": "Dex",
+      "description": "Ein großer, schwerer Schlüssel - gut zum Stechen",
+      "rarity": "common"
+    },
+    {
+      "id": "fassdeckel",
+      "name": "Fassdeckel",
+      "damage_dice": "1d4",
+      "damage_stat": "Str",
+      "description": "Ein runder Holzdeckel - kann als Schild dienen",
+      "rarity": "common",
+      "defense_bonus": 1
+    },
+    {
+      "id": "eiseneimer",
+      "name": "Eiseneimer",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein schwerer Eimer aus Eisen",
+      "rarity": "common"
+    },
+    {
+      "id": "heugabel",
+      "name": "Heugabel",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Eine dreizackige Heugabel vom Bauernhof",
+      "rarity": "common"
+    },
+    {
+      "id": "mistgabel",
+      "name": "Mistgabel",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Eine Mistgabel - riecht nicht gut, tut aber weh",
+      "rarity": "common"
+    },
+    {
+      "id": "sense",
+      "name": "Sense",
+      "damage_dice": "1d6",
+      "damage_stat": "Chr",
+      "description": "Eine bedrohliche Sense - Symbol des Todes",
+      "rarity": "uncommon",
+      "special": "intimidation"
+    },
+    {
+      "id": "oellampe",
+      "name": "Öllampe",
+      "damage_dice": "2d4",
+      "damage_stat": "Str",
+      "description": "Eine brennende Öllampe - explodiert bei Aufprall",
+      "rarity": "uncommon",
+      "element": "fire",
+      "special": "explosion"
+    },
+    {
+      "id": "kind_am_fuss",
+      "name": "Kleines Kind am Fuß gepackt",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Ein schreiendes Kind als improvisierte Waffe - moralisch fragwürdig",
+      "rarity": "legendary",
+      "special": "screaming_debuff"
+    }
+  ]
+}
