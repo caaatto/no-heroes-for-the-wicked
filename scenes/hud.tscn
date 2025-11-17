@@ -1,0 +1,167 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpk8r3n5m7qvw"]
+
+[ext_resource type="Script" path="res://scripts/HUDManager.cs" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopLeft" type="VBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 150.0
+
+[node name="LevelLabel" type="Label" parent="HUD/TopLeft"]
+layout_mode = 2
+text = "Level: 1"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="HealthLabel" type="Label" parent="HUD/TopLeft"]
+layout_mode = 2
+text = "HP: 100/100"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/TopLeft"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="ExperienceLabel" type="Label" parent="HUD/TopLeft"]
+layout_mode = 2
+text = "XP: 0/100"
+theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="GoldLabel" type="Label" parent="HUD/TopLeft"]
+layout_mode = 2
+text = "Gold: 0"
+theme_override_colors/font_color = Color(1, 0.85, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="TopRight" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 120.0
+grow_horizontal = 0
+
+[node name="WeaponName" type="Label" parent="HUD/TopRight"]
+layout_mode = 2
+text = "Weapon: None"
+horizontal_alignment = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="WeaponDamage" type="Label" parent="HUD/TopRight"]
+layout_mode = 2
+text = "Damage: -"
+horizontal_alignment = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="BottomLeft" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -250.0
+offset_right = 420.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="ActiveQuestsLabel" type="Label" parent="HUD/BottomLeft"]
+layout_mode = 2
+text = "Quests: 0 active"
+vertical_alignment = 2
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="QuestContainer" type="VBoxContainer" parent="HUD/BottomLeft"]
+layout_mode = 2
+
+[node name="BottomRight" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ControlsLabel" type="Label" parent="HUD/BottomRight"]
+layout_mode = 2
+text = "WASD: Move | SPACE: Attack
+E: Interact | I: Inventory
+F5: Save | F9: Load | ESC: Pause"
+horizontal_alignment = 2
+vertical_alignment = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.8)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 12
+
+[node name="Center" type="CenterContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NotificationLabel" type="Label" parent="HUD/Center"]
+layout_mode = 2
+text = "NOTIFICATION"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 24

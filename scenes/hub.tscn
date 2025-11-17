@@ -1,47 +1,146 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwn7k2pg5q3vr"]
+[gd_scene load_steps=6 format=3 uid="uid://bwn7k2pg5q3vr"]
 
 [ext_resource type="PackedScene" uid="uid://bhp2qdxf7nlc8" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="2_gamemanager"]
+[ext_resource type="PackedScene" uid="uid://dpk8r3n5m7qvw" path="res://scenes/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" uid="uid://dgn5k8m3qxp2w" path="res://scenes/npc_bartender.tscn" id="4_npc"]
+[ext_resource type="PackedScene" uid="uid://cf7k8m2pxnr4s" path="res://scenes/item_pickup.tscn" id="5_item"]
 
 [node name="Hub" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -500.0
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_gamemanager")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -600.0
 offset_top = -400.0
-offset_right = 500.0
+offset_right = 600.0
 offset_bottom = 400.0
 color = Color(0.2, 0.3, 0.2, 1)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(0, 0)
+position = Vector2(-200, 150)
 
 [node name="Environment" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
-[node name="Floor" type="CollisionPolygon2D" parent="Environment"]
-polygon = PackedVector2Array(-500, 300, 500, 300, 500, 400, -500, 400)
+[node name="Floor" type="ColorRect" parent="Environment"]
+offset_left = -600.0
+offset_top = 250.0
+offset_right = 600.0
+offset_bottom = 400.0
+color = Color(0.15, 0.2, 0.15, 1)
+metadata/_edit_lock_ = true
+
+[node name="FloorCollision" type="CollisionPolygon2D" parent="Environment"]
+polygon = PackedVector2Array(-600, 250, 600, 250, 600, 400, -600, 400)
 
 [node name="WallLeft" type="CollisionPolygon2D" parent="Environment"]
-polygon = PackedVector2Array(-500, -400, -400, -400, -400, 400, -500, 400)
+polygon = PackedVector2Array(-600, -400, -500, -400, -500, 400, -600, 400)
 
 [node name="WallRight" type="CollisionPolygon2D" parent="Environment"]
-polygon = PackedVector2Array(400, -400, 500, -400, 500, 400, 400, 400)
+polygon = PackedVector2Array(500, -400, 600, -400, 600, 400, 500, 400)
 
 [node name="WallTop" type="CollisionPolygon2D" parent="Environment"]
-polygon = PackedVector2Array(-500, -400, 500, -400, 500, -300, -500, -300)
+polygon = PackedVector2Array(-600, -400, 600, -400, 600, -300, -600, -300)
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="TavernSign" type="ColorRect" parent="Decorations"]
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -150.0
+offset_bottom = -200.0
+color = Color(0.6, 0.4, 0.2, 1)
+
+[node name="Label" type="Label" parent="Decorations/TavernSign"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 50.0
+text = "TAVERNE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Table1" type="ColorRect" parent="Decorations"]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 150.0
+color = Color(0.4, 0.3, 0.2, 1)
+
+[node name="Table2" type="ColorRect" parent="Decorations"]
+offset_left = -100.0
+offset_top = 50.0
+offset_right = 0.0
+offset_bottom = 100.0
+color = Color(0.4, 0.3, 0.2, 1)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Bartender" parent="NPCs" instance=ExtResource("4_npc")]
+position = Vector2(-200, -100)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Stuhlbein" parent="Items" instance=ExtResource("5_item")]
+position = Vector2(150, 100)
+ItemId = "stuhlbein"
+
+[node name="Krug" parent="Items" instance=ExtResource("5_item")]
+position = Vector2(-50, 70)
+ItemId = "krug"
+
+[node name="Morgenstern" parent="Items" instance=ExtResource("5_item")]
+position = Vector2(250, 50)
+ItemId = "morgenstern"
+
+[node name="RostigesSchwert" parent="Items" instance=ExtResource("5_item")]
+position = Vector2(-300, 0)
+ItemId = "rostiges_schwert"
+
+[node name="Hammer" parent="Items" instance=ExtResource("5_item")]
+position = Vector2(0, -150)
+ItemId = "hammer"
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(450, 0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+
+[node name="PortalVisual" type="ColorRect" parent="Portal"]
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = 60.0
+color = Color(0.5, 0, 0.8, 0.5)
+
+[node name="Label" type="Label" parent="Portal"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = -60.0
+text = "Boss Arena Portal"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="Labels" type="CanvasLayer" parent="."]
 
 [node name="TitleLabel" type="Label" parent="Labels"]
-offset_left = -200.0
-offset_top = -350.0
-offset_right = 200.0
-offset_bottom = -300.0
-text = "No Heroes for the Wicked - Hub Level"
+offset_left = 440.0
+offset_top = 10.0
+offset_right = 840.0
+offset_bottom = 60.0
+text = "No Heroes for the Wicked
+Hub Level - Taverne"
 horizontal_alignment = 1
-
-[node name="InstructionsLabel" type="Label" parent="Labels"]
-offset_left = -200.0
-offset_top = 320.0
-offset_right = 200.0
-offset_bottom = 370.0
-text = "WASD: Move | SPACE: Attack | I: Inventory | E: Interact"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
