@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgn5k8m3qxp2w"]
+
+[ext_resource type="Script" path="res://scripts/NPCController.cs" id="1_npc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interaction"]
+radius = 60.0
+
+[node name="NPCBartender" type="CharacterBody2D" groups=["npcs"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_npc")
+NpcName = "Tavernenwirt"
+NpcId = "bartender"
+DialogueLines = PackedStringArray("Willkommen in meiner Taverne!", "Dieser verdammte Troll terrorisiert die Gegend...", "Wenn du ihn besiegst, gebe ich dir eine Belohnung!", "Hier, nimm diesen Krug als Waffe!")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_interaction")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 24.0
+color = Color(0.4, 0.25, 0.15, 1)
+
+[node name="Head" type="ColorRect" parent="Sprite2D"]
+offset_left = -12.0
+offset_top = -32.0
+offset_right = 12.0
+offset_bottom = -16.0
+color = Color(0.9, 0.7, 0.5, 1)
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -50.0
+offset_right = 60.0
+offset_bottom = -30.0
+text = "Tavernenwirt"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="InteractionHint" type="Label" parent="."]
+offset_left = -60.0
+offset_top = 30.0
+offset_right = 60.0
+offset_bottom = 50.0
+text = "[E] Talk"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_interaction")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf7k8m2pxnr4s"]
+
+[ext_resource type="Script" path="res://scripts/ItemPickup.cs" id="1_pickup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 30.0
+
+[node name="ItemPickup" type="Area2D" groups=["items"]]
+collision_layer = 16
+collision_mask = 1
+script = ExtResource("1_pickup")
+ItemId = "stuhlbein"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pickup")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.8, 0.6, 0.2, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+color = Color(0.8, 0.6, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -40.0
+offset_right = 60.0
+offset_bottom = -20.0
+text = "[E] Pickup Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12

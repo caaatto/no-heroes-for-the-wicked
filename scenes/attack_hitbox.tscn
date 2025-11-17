@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh9k7n3qxm5rt"]
+
+[ext_resource type="Script" path="res://scripts/AttackHitbox.cs" id="1_hitbox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 40)
+
+[node name="AttackHitbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hitbox")
+Damage = 10
+Lifetime = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="VisualEffect" type="Sprite2D" parent="."]
+modulate = Color(1, 0.3, 0.3, 0.6)
+
+[node name="ColorRect" type="ColorRect" parent="VisualEffect"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 1, 0, 0.5)

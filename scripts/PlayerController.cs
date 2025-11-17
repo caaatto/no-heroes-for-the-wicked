@@ -77,24 +77,38 @@ public partial class PlayerController : CharacterBody2D
         _canAttack = false;
         _attackTimer.Start();
 
-        // Play attack animation
-        if (_animatedSprite != null)
+        GD.Print($"{PlayerName} attacks!");
+
+        // Calculate attack damage
+        int damage = AttackValue;
+        if (_inventory != null && _inventory.HasEquippedWeapon())
         {
-            // Animation will be added when sprites are available
-            GD.Print($"{PlayerName} attacks!");
+            damage += _inventory.GetEquippedWeaponDamage();
         }
 
-        // Check for enemies in attack range
-        var spaceState = GetWorld2D().DirectSpaceState;
-        var query = PhysicsShapeQueryParameters2D.Create();
-
         // Create attack hitbox
-        var attackRange = 50.0f;
-        var attackDirection = GetFacingDirection();
-        var attackPosition = GlobalPosition + attackDirection * attackRange;
+        var attackHitboxScene = GD.Load<PackedScene>("res://scenes/attack_hitbox.tscn");
+        if (attackHitboxScene != null)
+        {
+            var hitbox = attackHitboxScene.Instantiate<AttackHitbox>();
+            hitbox.Damage = damage;
+            hitbox.IsPlayerAttack = true;
 
-        // Simplified attack detection - will be enhanced with Area2D
-        CheckForEnemiesInRange(attackPosition, attackRange);
+            // Position hitbox in front of player
+            var attackDirection = GetFacingDirection();
+            hitbox.GlobalPosition = GlobalPosition + attackDirection * 40.0f;
+            hitbox.Rotation = attackDirection.Angle();
+
+            GetTree().Root.AddChild(hitbox);
+        }
+        else
+        {
+            // Fallback to old system
+            var attackRange = 50.0f;
+            var attackDirection = GetFacingDirection();
+            var attackPosition = GlobalPosition + attackDirection * attackRange;
+            CheckForEnemiesInRange(attackPosition, attackRange);
+        }
     }
 
     private Vector2 GetFacingDirection()

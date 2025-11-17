@@ -1,66 +1,131 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8k9pm2xvn5dx"]
 
-[ext_resource type="PackedScene" uid="uid://bwn7k2pg5q3vr" path="res://scenes/hub.tscn" id="1_hub"]
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_mainmenu"]
 
-[node name="Main" type="Node2D"]
-
-[node name="Hub" parent="." instance=ExtResource("1_hub")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mainmenu")
 
-[node name="HUD" type="VBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 300.0
-offset_bottom = 100.0
-
-[node name="HealthLabel" type="Label" parent="CanvasLayer/UI/HUD"]
-layout_mode = 2
-text = "HP: 100/100"
-
-[node name="WeaponLabel" type="Label" parent="CanvasLayer/UI/HUD"]
-layout_mode = 2
-text = "Weapon: None"
-
-[node name="QuestLabel" type="Label" parent="CanvasLayer/UI/HUD"]
-layout_mode = 2
-text = "Quests: 0/3"
-
-[node name="MenuButtons" type="VBoxContainer" parent="CanvasLayer/UI"]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -150.0
-offset_right = 100.0
-offset_bottom = -50.0
 grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.1, 0.1, 1)
+
+[node name="Title" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="Title"]
+layout_mode = 2
+text = "NO HEROES"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 48
+
+[node name="GameSubtitle" type="Label" parent="Title"]
+layout_mode = 2
+text = "for the Wicked"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.7, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+
+[node name="Tagline" type="Label" parent="Title"]
+layout_mode = 2
+text = "Ein 2D Action-Adventure"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="NewGameButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "Neues Spiel"
+
+[node name="LoadGameButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "Spiel laden"
+
+[node name="QuitButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "Beenden"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -30.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
 grow_vertical = 0
+text = "v0.1 MVP - Godot 4"
+horizontal_alignment = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 
-[node name="StartButton" type="Button" parent="CanvasLayer/UI/MenuButtons"]
-layout_mode = 2
-text = "Start Game (F1)"
-
-[node name="LoadButton" type="Button" parent="CanvasLayer/UI/MenuButtons"]
-layout_mode = 2
-text = "Load Game (F2)"
-
-[node name="SaveButton" type="Button" parent="CanvasLayer/UI/MenuButtons"]
-layout_mode = 2
-text = "Save Game (F5)"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/UI/MenuButtons"]
-layout_mode = 2
-text = "Quit (ESC)"
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Made with Godot Engine"
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
