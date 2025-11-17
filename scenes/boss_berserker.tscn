@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://berserker_boss_001"]
+
+[ext_resource type="Script" path="res://scripts/BerserkerBoss.cs" id="1"]
+
+[node name="BerserkerBoss" type="CharacterBody2D"]
+script = ExtResource("1")
+collision_layer = 2
+collision_mask = 5
+EnemyName = "Berserker Boss"
+MaxLifePoints = 220
+CurrentLifePoints = 220
+AttackValue = 18
+MoveSpeed = 140.0
+DetectionRange = 350.0
+AttackRange = 55.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_berserker")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.8, 1.8)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = -45.0
