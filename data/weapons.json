@@ -166,6 +166,218 @@
       "description": "Ein schreiendes Kind als improvisierte Waffe - moralisch fragwürdig",
       "rarity": "legendary",
       "special": "screaming_debuff"
+    },
+    {
+      "id": "besen",
+      "name": "Besen",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Ein einfacher Hexenbesen - schnell und wendig",
+      "rarity": "common"
+    },
+    {
+      "id": "pfanne",
+      "name": "Schwere Eisenpfanne",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Eine massive gusseiserne Bratpfanne - ein Klassiker",
+      "rarity": "uncommon",
+      "special": "stun_chance"
+    },
+    {
+      "id": "axt",
+      "name": "Holzfälleraxt",
+      "damage_dice": "1d10",
+      "damage_stat": "Str",
+      "description": "Eine scharfe Axt zum Holzhacken - und mehr",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "sichel",
+      "name": "Sichel",
+      "damage_dice": "1d6",
+      "damage_stat": "Dex",
+      "description": "Eine gebogene Sichel - schnelle Hiebe",
+      "rarity": "common"
+    },
+    {
+      "id": "spitzhacke",
+      "name": "Spitzhacke",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Eine schwere Bergbauspitzhacke",
+      "rarity": "uncommon",
+      "special": "armor_pierce"
+    },
+    {
+      "id": "dreschflegel",
+      "name": "Dreschflegel",
+      "damage_dice": "1d10",
+      "damage_stat": "Str",
+      "description": "Ein Dreschflegel mit schwerem Eisenkopf",
+      "rarity": "rare",
+      "special": "knockback"
+    },
+    {
+      "id": "geweih",
+      "name": "Hirschgeweih",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein abgeworfenes Hirschgeweih - natürlich und tödlich",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "knochen",
+      "name": "Menschenknochen",
+      "damage_dice": "1d4",
+      "damage_stat": "Chr",
+      "description": "Ein großer Knochen - verstörend anzusehen",
+      "rarity": "uncommon",
+      "special": "fear_effect"
+    },
+    {
+      "id": "zauberstab",
+      "name": "Zerbrochener Zauberstab",
+      "damage_dice": "2d4",
+      "damage_stat": "Wis",
+      "description": "Ein beschädigter Zauberstab mit restlicher Magie",
+      "rarity": "rare",
+      "element": "arcane"
+    },
+    {
+      "id": "bibel",
+      "name": "Schwere Bibel",
+      "damage_dice": "1d6",
+      "damage_stat": "Wis",
+      "description": "Ein massives Heiliges Buch - göttliche Vergeltung",
+      "rarity": "rare",
+      "element": "holy",
+      "special": "undead_bonus"
+    },
+    {
+      "id": "fackel",
+      "name": "Brennende Fackel",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Eine lodernde Fackel - Licht und Feuer",
+      "rarity": "common",
+      "element": "fire"
+    },
+    {
+      "id": "zweihander",
+      "name": "Zweihänder",
+      "damage_dice": "2d6",
+      "damage_stat": "Str",
+      "description": "Ein mächtiges Zweihänder-Schwert",
+      "rarity": "rare"
+    },
+    {
+      "id": "rapier",
+      "name": "Rapier",
+      "damage_dice": "1d8",
+      "damage_stat": "Dex",
+      "description": "Ein elegantes Fechtrapier - präzise und schnell",
+      "rarity": "rare",
+      "special": "critical_chance"
+    },
+    {
+      "id": "streitkolben",
+      "name": "Streitkolben",
+      "damage_dice": "1d10",
+      "damage_stat": "Str",
+      "description": "Ein schwerer Streitkolben - zerschmettert Rüstungen",
+      "rarity": "rare",
+      "special": "armor_pierce"
+    },
+    {
+      "id": "armbrustbolzen",
+      "name": "Armbrustbolzen",
+      "damage_dice": "1d8",
+      "damage_stat": "Dex",
+      "description": "Ein scharfer Bolzen zum Werfen (Armbrust verloren)",
+      "rarity": "common"
+    },
+    {
+      "id": "giftdolch",
+      "name": "Giftdolch",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Ein kleiner Dolch mit vergifteter Klinge",
+      "rarity": "rare",
+      "element": "poison",
+      "special": "poison_dot"
+    },
+    {
+      "id": "schrottflinte",
+      "name": "Schrottflinte",
+      "damage_dice": "2d6",
+      "damage_stat": "Dex",
+      "description": "Eine alte Schrottflinte - letzte Munition",
+      "rarity": "legendary",
+      "special": "scatter_damage"
+    },
+    {
+      "id": "brandeisen",
+      "name": "Brandeisen",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Ein glühendes Brandeisen aus der Schmiede",
+      "rarity": "uncommon",
+      "element": "fire",
+      "special": "burn_effect"
+    },
+    {
+      "id": "fleischerhaken",
+      "name": "Fleischerhaken",
+      "damage_dice": "1d8",
+      "damage_stat": "Str",
+      "description": "Ein großer Haken aus der Metzgerei - grausam",
+      "rarity": "uncommon",
+      "special": "bleed_effect"
+    },
+    {
+      "id": "eisenstange",
+      "name": "Eisenstange",
+      "damage_dice": "1d6",
+      "damage_stat": "Str",
+      "description": "Eine massive Eisenstange - schwer und brutal",
+      "rarity": "common"
+    },
+    {
+      "id": "wurfstern",
+      "name": "Wurfstern",
+      "damage_dice": "1d4",
+      "damage_stat": "Dex",
+      "description": "Ein scharfer Shuriken - schnell und präzise",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "peitsche",
+      "name": "Lederpeitsche",
+      "damage_dice": "1d6",
+      "damage_stat": "Dex",
+      "description": "Eine lange Peitsche - Reichweite und Kontrolle",
+      "rarity": "uncommon",
+      "special": "pull_effect"
+    },
+    {
+      "id": "kriegshammer",
+      "name": "Kriegshammer",
+      "damage_dice": "2d6",
+      "damage_stat": "Str",
+      "description": "Ein massiver Kriegshammer - zerschmettert alles",
+      "rarity": "rare",
+      "special": "knockback"
+    },
+    {
+      "id": "magisches_buch",
+      "name": "Grimoire der Schatten",
+      "damage_dice": "2d6",
+      "damage_stat": "Wis",
+      "description": "Ein uraltes Zauberbuch voller dunkler Magie",
+      "rarity": "legendary",
+      "element": "shadow",
+      "special": "mana_drain"
     }
   ]
 }
