@@ -32,17 +32,17 @@ public partial class MainMenu : Control
         _localization = GetNodeOrNull<LocalizationManager>("/root/LocalizationManager");
         _audioManager = GetNodeOrNull<AudioManager>("/root/AudioManager");
 
-        // Get panel references
+        // Get panel references (not needed for simple main menu)
         _mainMenuPanel = GetNodeOrNull<Control>("MainMenuPanel");
         _settingsPanel = GetNodeOrNull<Control>("SettingsPanel");
         _creditsPanel = GetNodeOrNull<Control>("CreditsPanel");
 
-        // Get button references
-        _newGameButton = GetNodeOrNull<Button>("MainMenuPanel/MenuContainer/NewGameButton");
-        _continueButton = GetNodeOrNull<Button>("MainMenuPanel/MenuContainer/ContinueButton");
-        _settingsButton = GetNodeOrNull<Button>("MainMenuPanel/MenuContainer/SettingsButton");
-        _creditsButton = GetNodeOrNull<Button>("MainMenuPanel/MenuContainer/CreditsButton");
-        _quitButton = GetNodeOrNull<Button>("MainMenuPanel/MenuContainer/QuitButton");
+        // Get button references from the actual scene structure
+        _newGameButton = GetNodeOrNull<Button>("MenuContainer/NewGameButton");
+        _continueButton = GetNodeOrNull<Button>("MenuContainer/LoadGameButton");
+        _settingsButton = GetNodeOrNull<Button>("MenuContainer/SettingsButton");
+        _creditsButton = GetNodeOrNull<Button>("MenuContainer/CreditsButton");
+        _quitButton = GetNodeOrNull<Button>("MenuContainer/QuitButton");
 
         // Connect button signals
         ConnectButtons();
@@ -56,8 +56,11 @@ public partial class MainMenu : Control
             _localization.LanguageChanged += OnLanguageChanged;
         }
 
-        // Show main menu panel by default
-        ShowMainMenu();
+        // Show main menu panel by default (if panels exist)
+        if (_mainMenuPanel != null)
+        {
+            ShowMainMenu();
+        }
 
         // Play menu music
         if (_audioManager != null)
@@ -68,7 +71,9 @@ public partial class MainMenu : Control
         // Check for save file and enable/disable continue button
         UpdateContinueButton();
 
-        GD.Print("Enhanced Main Menu ready");
+        GD.Print("Main Menu ready - Buttons: NewGame=" + (_newGameButton != null) +
+                 ", Continue=" + (_continueButton != null) +
+                 ", Quit=" + (_quitButton != null));
     }
 
     private void ConnectButtons()
@@ -114,7 +119,12 @@ public partial class MainMenu : Control
 
     private void UpdateLocalization()
     {
-        if (_localization == null) return;
+        // Localization is optional - buttons have default German text in scene
+        if (_localization == null)
+        {
+            GD.Print("Localization not available, using default button text");
+            return;
+        }
 
         if (_newGameButton != null)
             _newGameButton.Text = _localization.GetText("menu_new_game");
@@ -164,19 +174,9 @@ public partial class MainMenu : Control
         PlayClickSound();
         GD.Print("Starting new game...");
 
-        // Show tutorial on first play
-        bool isFirstPlay = _saveLoadSystem == null || !_saveLoadSystem.SaveFileExists();
-
-        if (isFirstPlay)
-        {
-            // Start with tutorial
-            GetTree().ChangeSceneToFile("res://scenes/tutorial.tscn");
-        }
-        else
-        {
-            // Go directly to hub
-            GetTree().ChangeSceneToFile("res://scenes/hub.tscn");
-        }
+        // TODO: Add tutorial scene later
+        // For now, go directly to hub
+        GetTree().ChangeSceneToFile("res://scenes/hub.tscn");
     }
 
     private void OnContinuePressed()
