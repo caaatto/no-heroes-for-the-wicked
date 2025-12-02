@@ -29,7 +29,7 @@ public partial class MinimapSystem : CanvasLayer
     [Export] public Vector2 MinimapSize { get; set; } = new Vector2(200, 200);
     [Export] public Vector2 MinimapPosition { get; set; } = new Vector2(20, 20); // Top-right corner
     [Export] public float ZoomLevel { get; set; } = 2.0f;
-    [Export] public bool IsVisible { get; set; } = true;
+    [Export] public new bool IsVisible { get; set; } = true;
     [Export] public bool FollowPlayer { get; set; } = true;
     [Export] public string ToggleAction { get; set; } = "ui_focus_next"; // Tab key
 

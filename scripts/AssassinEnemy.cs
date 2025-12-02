@@ -54,7 +54,7 @@ public partial class AssassinEnemy : EnemyController
         }
 
         // Try to teleport when in chase state
-        if (CurrentState == AIState.Chase && _teleportTimer <= 0 && !_isInvisible)
+        if (CurrentState == EnemyState.Chase && _teleportTimer <= 0 && !_isInvisible)
         {
             if (_player != null && GlobalPosition.DistanceTo(_player.GlobalPosition) <= TeleportRange)
             {
@@ -118,7 +118,7 @@ public partial class AssassinEnemy : EnemyController
         if (_player == null || !_canAttack) return;
 
         _canAttack = false;
-        _attackTimer = AttackCooldown;
+        _attackTimer.Start();
 
         // Check if attacking from behind (backstab)
         bool isBackstab = IsAttackingFromBehind();
@@ -139,7 +139,7 @@ public partial class AssassinEnemy : EnemyController
             EndInvisibility();
         }
 
-        EmitSignal(SignalName.EnemyAttacked, damage);
+        // EmitSignal(SignalName.EnemyAttacked, damage); // Signal not defined in base class
     }
 
     /// <summary>

@@ -41,7 +41,7 @@ public partial class OgreEnemy : EnemyController
         }
 
         // Check for slam opportunity
-        if (CurrentState == AIState.Attack && _slamTimer <= 0 && !_isSlam)
+        if (CurrentState == EnemyState.Attack && _slamTimer <= 0 && !_isSlam)
         {
             // 30% chance to use slam instead of normal attack
             if (GD.Randf() < 0.3f)

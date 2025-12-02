@@ -203,18 +203,22 @@ public partial class HUDManager : CanvasLayer
         }
     }
 
-    private void OnQuestStarted(Quest quest)
+    private void OnQuestStarted(string questId)
     {
         UpdateQuestDisplay();
-        ShowNotification($"New Quest: {quest.Title}");
+        var quest = _questSystem?.GetQuest(questId);
+        if (quest != null)
+        {
+            ShowNotification($"New Quest: {quest.Title}");
+        }
     }
 
-    private void OnQuestCompleted(Quest quest)
+    private void OnQuestCompleted(string questId)
     {
         UpdateQuestDisplay();
     }
 
-    private void OnQuestProgressUpdated(Quest quest, QuestObjective objective)
+    private void OnQuestProgressUpdated(string questId, string objectiveDescription)
     {
         UpdateQuestDisplay();
     }

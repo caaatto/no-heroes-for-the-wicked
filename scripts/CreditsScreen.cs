@@ -157,17 +157,17 @@ public partial class CreditsScreen : Control
 
         // Auto-scroll credits
         float currentScroll = _scrollContainer.ScrollVertical;
-        float maxScroll = _scrollContainer.GetVScrollBar().MaxValue;
+        float maxScroll = (float)_scrollContainer.GetVScrollBar().MaxValue;
 
         if (currentScroll < maxScroll)
         {
-            _scrollContainer.ScrollVertical = (int)(currentScroll + _scrollSpeed * delta);
+            _scrollContainer.ScrollVertical = (int)(currentScroll + _scrollSpeed * (float)delta);
         }
         else
         {
             // Reached the end, reset after a delay
             _autoScroll = false;
-            GetTree().CreateTimer(3.0).Timeout += ResetScroll;
+            GetTree().CreateTimer(3.0f).Timeout += ResetScroll;
         }
     }
 
@@ -189,14 +189,14 @@ public partial class CreditsScreen : Control
                 mouseButton.ButtonIndex == MouseButton.WheelDown)
             {
                 _autoScroll = false;
-                GetTree().CreateTimer(2.0).Timeout += () => _autoScroll = true;
+                GetTree().CreateTimer(2.0f).Timeout += () => _autoScroll = true;
             }
         }
 
         if (@event.IsActionPressed("ui_up") || @event.IsActionPressed("ui_down"))
         {
             _autoScroll = false;
-            GetTree().CreateTimer(2.0).Timeout += () => _autoScroll = true;
+            GetTree().CreateTimer(2.0f).Timeout += () => _autoScroll = true;
         }
 
         // ESC or Back action to exit

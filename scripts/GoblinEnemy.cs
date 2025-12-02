@@ -54,7 +54,7 @@ public partial class GoblinEnemy : EnemyController
     private void StartFleeing()
     {
         _isFleeing = true;
-        CurrentState = AIState.Chase; // Use chase state but flee
+        CurrentState = EnemyState.Chase; // Use chase state but flee
 
         // Calculate flee direction (away from player)
         if (_player != null)

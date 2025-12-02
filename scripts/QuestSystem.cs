@@ -133,7 +133,7 @@ public partial class QuestSystem : Node
         quest.Status = QuestStatus.Active;
         _activeQuests.Add(quest);
         GD.Print($"Started quest: {quest.Title}");
-        EmitSignal(SignalName.QuestStarted, quest);
+        EmitSignal(SignalName.QuestStarted, quest.Id);
     }
 
     public void UpdateQuestProgress(string targetType, string targetId, int amount = 1)
@@ -162,7 +162,7 @@ public partial class QuestSystem : Node
                     }
 
                     questUpdated = true;
-                    EmitSignal(SignalName.QuestProgressUpdated, quest, objective);
+                    EmitSignal(SignalName.QuestProgressUpdated, quest.Id, objective.Description);
                 }
             }
 
@@ -184,7 +184,7 @@ public partial class QuestSystem : Node
         _completedQuests.Add(quest);
 
         GD.Print($"Quest completed: {quest.Title}");
-        EmitSignal(SignalName.QuestCompleted, quest);
+        EmitSignal(SignalName.QuestCompleted, quest.Id);
 
         // Award rewards
         GiveRewards(quest.Rewards);
@@ -198,7 +198,7 @@ public partial class QuestSystem : Node
         GD.Print($"Rewards: {rewards.Experience} XP, {rewards.Gold} Gold");
 
         // Emit signal for rewards (can be handled by player controller or game manager)
-        EmitSignal(SignalName.RewardsGiven, rewards);
+        EmitSignal(SignalName.RewardsGiven, rewards.Experience, rewards.Gold);
 
         // Items will be added to inventory by the handler
         if (rewards.Items != null && rewards.Items.Count > 0)
@@ -234,16 +234,16 @@ public partial class QuestSystem : Node
 
     // Signals
     [Signal]
-    public delegate void QuestStartedEventHandler(Quest quest);
+    public delegate void QuestStartedEventHandler(string questId);
 
     [Signal]
-    public delegate void QuestProgressUpdatedEventHandler(Quest quest, QuestObjective objective);
+    public delegate void QuestProgressUpdatedEventHandler(string questId, string objectiveDescription);
 
     [Signal]
-    public delegate void QuestCompletedEventHandler(Quest quest);
+    public delegate void QuestCompletedEventHandler(string questId);
 
     [Signal]
-    public delegate void RewardsGivenEventHandler(QuestRewards rewards);
+    public delegate void RewardsGivenEventHandler(int experience, int gold);
 }
 
 // Quest classes

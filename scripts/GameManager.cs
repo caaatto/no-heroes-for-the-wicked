@@ -277,17 +277,21 @@ public partial class GameManager : Node
         GetTree().CreateTimer(2.0).Timeout += () => ChangeState(GameState.GameOver);
     }
 
-    private void OnQuestCompleted(Quest quest)
+    private void OnQuestCompleted(string questId)
     {
-        ShowNotification($"Quest Completed: {quest.Title}!");
+        var quest = _questSystem?.GetQuest(questId);
+        if (quest != null)
+        {
+            ShowNotification($"Quest Completed: {quest.Title}!");
+        }
     }
 
-    private void OnRewardsGiven(QuestRewards rewards)
+    private void OnRewardsGiven(int experience, int gold)
     {
-        if (rewards.Experience > 0)
-            AddExperience(rewards.Experience);
-        if (rewards.Gold > 0)
-            AddGold(rewards.Gold);
+        if (experience > 0)
+            AddExperience(experience);
+        if (gold > 0)
+            AddGold(gold);
     }
 
     // UI Management

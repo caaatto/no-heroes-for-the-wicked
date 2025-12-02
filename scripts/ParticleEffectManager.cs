@@ -40,7 +40,7 @@ public partial class ParticleEffectManager : Node2D
         _effectTemplates["heal"] = CreateHealEffect;
         _effectTemplates["level_up"] = CreateLevelUpEffect;
         _effectTemplates["dash_trail"] = CreateDashTrailEffect;
-        _effectTemplates["explosion"] = CreateExplosionEffect;
+        // _effectTemplates["explosion"] = CreateExplosionEffect; // Method not implemented yet
         _effectTemplates["magic_cast"] = CreateMagicCastEffect;
         _effectTemplates["teleport"] = CreateTeleportEffect;
         _effectTemplates["power_up"] = CreatePowerUpEffect;
@@ -151,9 +151,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 20;
-        particles.Lifetime = 0.5;
+        particles.Lifetime = 0.5f;
         particles.OneShot = true;
-        particles.Explosiveness = 1.0;
+        particles.Explosiveness = 1.0f;
         particles.ProcessMaterial = CreateImpactMaterial();
         return particles;
     }
@@ -166,9 +166,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 50;
         material.InitialVelocityMax = 150;
         material.Gravity = new Vector3(0, 200, 0);
-        material.Scale = 2.0;
-        material.ScaleMin = 1.0;
-        material.ScaleMax = 3.0;
+        material.ScaleMin = 1.0f;
+        material.ScaleMax = 3.0f;
         material.Color = new Color(1, 0.8f, 0.3f);
         return material;
     }
@@ -180,9 +179,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 30;
-        particles.Lifetime = 0.8;
+        particles.Lifetime = 0.8f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.9;
+        particles.Explosiveness = 0.9f;
         particles.ProcessMaterial = CreateBloodMaterial();
         return particles;
     }
@@ -195,9 +194,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 80;
         material.InitialVelocityMax = 200;
         material.Gravity = new Vector3(0, 400, 0);
-        material.Scale = 3.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 5.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 5.0f;
         material.Color = new Color(0.8f, 0.1f, 0.1f);
         return material;
     }
@@ -209,9 +207,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 50;
-        particles.Lifetime = 1.0;
+        particles.Lifetime = 1.0f;
         particles.OneShot = true;
-        particles.Explosiveness = 1.0;
+        particles.Explosiveness = 1.0f;
         particles.ProcessMaterial = CreateExplosionMaterial();
         return particles;
     }
@@ -224,9 +222,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 100;
         material.InitialVelocityMax = 300;
         material.Gravity = new Vector3(0, 300, 0);
-        material.Scale = 4.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 6.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 6.0f;
         material.Color = new Color(1, 0.5f, 0);
         return material;
     }
@@ -238,9 +235,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 40;
-        particles.Lifetime = 1.5;
+        particles.Lifetime = 1.5f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.5;
+        particles.Explosiveness = 0.5f;
         particles.ProcessMaterial = CreateHealMaterial();
         return particles;
     }
@@ -253,9 +250,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 40;
         material.InitialVelocityMax = 80;
         material.Gravity = new Vector3(0, -150, 0); // Float upward
-        material.Scale = 3.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 4.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 4.0f;
         material.Color = new Color(0.2f, 1, 0.2f);
         return material;
     }
@@ -267,9 +263,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 60;
-        particles.Lifetime = 2.0;
+        particles.Lifetime = 2.0f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.3;
+        particles.Explosiveness = 0.3f;
         particles.ProcessMaterial = CreateLevelUpMaterial();
         return particles;
     }
@@ -282,9 +278,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 50;
         material.InitialVelocityMax = 100;
         material.Gravity = new Vector3(0, -100, 0);
-        material.Scale = 4.0;
-        material.ScaleMin = 3.0;
-        material.ScaleMax = 6.0;
+        material.ScaleMin = 3.0f;
+        material.ScaleMax = 6.0f;
         material.Color = new Color(1, 1, 0);
         return material;
     }
@@ -296,9 +291,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 30;
-        particles.Lifetime = 0.4;
+        particles.Lifetime = 0.4f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.1;
+        particles.Explosiveness = 0.1f;
         particles.ProcessMaterial = CreateDashMaterial();
         return particles;
     }
@@ -311,9 +306,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 10;
         material.InitialVelocityMax = 30;
         material.Gravity = new Vector3(0, 0, 0);
-        material.Scale = 2.0;
-        material.ScaleMin = 1.0;
-        material.ScaleMax = 3.0;
+        material.ScaleMin = 1.0f;
+        material.ScaleMax = 3.0f;
         material.Color = new Color(0.5f, 0.5f, 1, 0.6f);
         return material;
     }
@@ -325,9 +319,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 50;
-        particles.Lifetime = 1.0;
+        particles.Lifetime = 1.0f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.4;
+        particles.Explosiveness = 0.4f;
         particles.ProcessMaterial = CreateMagicMaterial();
         return particles;
     }
@@ -340,9 +334,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 60;
         material.InitialVelocityMax = 120;
         material.Gravity = new Vector3(0, -50, 0);
-        material.Scale = 3.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 5.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 5.0f;
         material.Color = new Color(0.5f, 0.2f, 1);
         return material;
     }
@@ -354,9 +347,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 80;
-        particles.Lifetime = 0.8;
+        particles.Lifetime = 0.8f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.8;
+        particles.Explosiveness = 0.8f;
         particles.ProcessMaterial = CreateTeleportMaterial();
         return particles;
     }
@@ -369,9 +362,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 100;
         material.InitialVelocityMax = 200;
         material.Gravity = new Vector3(0, 0, 0);
-        material.Scale = 4.0;
-        material.ScaleMin = 3.0;
-        material.ScaleMax = 6.0;
+        material.ScaleMin = 3.0f;
+        material.ScaleMax = 6.0f;
         material.Color = new Color(0, 1, 1);
         return material;
     }
@@ -383,9 +375,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 40;
-        particles.Lifetime = 1.5;
+        particles.Lifetime = 1.5f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.2;
+        particles.Explosiveness = 0.2f;
         particles.ProcessMaterial = CreatePowerUpMaterial();
         return particles;
     }
@@ -398,9 +390,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 30;
         material.InitialVelocityMax = 70;
         material.Gravity = new Vector3(0, -80, 0);
-        material.Scale = 3.5;
-        material.ScaleMin = 2.5;
-        material.ScaleMax = 5.0;
+        material.ScaleMin = 2.5f;
+        material.ScaleMax = 5.0f;
         material.Color = new Color(1, 0.3f, 0.3f);
         return material;
     }
@@ -412,9 +403,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 25;
-        particles.Lifetime = 2.0;
+        particles.Lifetime = 2.0f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.1;
+        particles.Explosiveness = 0.1f;
         particles.ProcessMaterial = CreateSmokeMaterial();
         return particles;
     }
@@ -427,9 +418,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 20;
         material.InitialVelocityMax = 50;
         material.Gravity = new Vector3(0, -30, 0);
-        material.Scale = 6.0;
-        material.ScaleMin = 4.0;
-        material.ScaleMax = 8.0;
+        material.ScaleMin = 4.0f;
+        material.ScaleMax = 8.0f;
         material.Color = new Color(0.3f, 0.3f, 0.3f, 0.5f);
         return material;
     }
@@ -441,9 +431,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 35;
-        particles.Lifetime = 1.2;
+        particles.Lifetime = 1.2f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.3;
+        particles.Explosiveness = 0.3f;
         particles.ProcessMaterial = CreateSparklesMaterial();
         return particles;
     }
@@ -456,9 +446,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 40;
         material.InitialVelocityMax = 80;
         material.Gravity = new Vector3(0, -50, 0);
-        material.Scale = 2.5;
-        material.ScaleMin = 1.5;
-        material.ScaleMax = 3.5;
+        material.ScaleMin = 1.5f;
+        material.ScaleMax = 3.5f;
         material.Color = new Color(1, 1, 0.5f);
         return material;
     }
@@ -470,9 +459,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 45;
-        particles.Lifetime = 1.0;
+        particles.Lifetime = 1.0f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.5;
+        particles.Explosiveness = 0.5f;
         particles.ProcessMaterial = CreateFireMaterial();
         return particles;
     }
@@ -485,9 +474,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 60;
         material.InitialVelocityMax = 120;
         material.Gravity = new Vector3(0, -100, 0);
-        material.Scale = 4.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 6.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 6.0f;
         material.Color = new Color(1, 0.3f, 0);
         return material;
     }
@@ -499,9 +487,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 30;
-        particles.Lifetime = 2.5;
+        particles.Lifetime = 2.5f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.1;
+        particles.Explosiveness = 0.1f;
         particles.ProcessMaterial = CreatePoisonMaterial();
         return particles;
     }
@@ -514,9 +502,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 15;
         material.InitialVelocityMax = 40;
         material.Gravity = new Vector3(0, -10, 0);
-        material.Scale = 7.0;
-        material.ScaleMin = 5.0;
-        material.ScaleMax = 9.0;
+        material.ScaleMin = 5.0f;
+        material.ScaleMax = 9.0f;
         material.Color = new Color(0.3f, 0.8f, 0.2f, 0.6f);
         return material;
     }
@@ -528,9 +515,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 60;
-        particles.Lifetime = 0.3;
+        particles.Lifetime = 0.3f;
         particles.OneShot = true;
-        particles.Explosiveness = 1.0;
+        particles.Explosiveness = 1.0f;
         particles.ProcessMaterial = CreateLightningMaterial();
         return particles;
     }
@@ -543,9 +530,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 150;
         material.InitialVelocityMax = 300;
         material.Gravity = new Vector3(0, 0, 0);
-        material.Scale = 3.0;
-        material.ScaleMin = 2.0;
-        material.ScaleMax = 5.0;
+        material.ScaleMin = 2.0f;
+        material.ScaleMax = 5.0f;
         material.Color = new Color(0.7f, 0.7f, 1);
         return material;
     }
@@ -557,9 +543,9 @@ public partial class ParticleEffectManager : Node2D
     {
         var particles = new GpuParticles2D();
         particles.Amount = 40;
-        particles.Lifetime = 0.8;
+        particles.Lifetime = 0.8f;
         particles.OneShot = true;
-        particles.Explosiveness = 0.9;
+        particles.Explosiveness = 0.9f;
         particles.ProcessMaterial = CreateShieldBreakMaterial();
         return particles;
     }
@@ -572,9 +558,8 @@ public partial class ParticleEffectManager : Node2D
         material.InitialVelocityMin = 80;
         material.InitialVelocityMax = 160;
         material.Gravity = new Vector3(0, 200, 0);
-        material.Scale = 4.0;
-        material.ScaleMin = 3.0;
-        material.ScaleMax = 6.0;
+        material.ScaleMin = 3.0f;
+        material.ScaleMax = 6.0f;
         material.Color = new Color(0.5f, 0.8f, 1);
         return material;
     }

@@ -82,7 +82,7 @@ public partial class NecromancerMinion : EnemyController
         _lifeTimer = LifeTime;
 
         // Reset state
-        CurrentState = AIState.Idle;
+        CurrentState = EnemyState.Idle;
 
         // Visual effect (reduced opacity for undead)
         Modulate = new Color(0.8f, 0.8f, 1.0f, 0.9f);

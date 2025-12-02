@@ -33,7 +33,7 @@ public partial class ArcherEnemy : EnemyController
     public override void _PhysicsProcess(double delta)
     {
         // Maintain distance from player
-        if (_player != null && CurrentState == AIState.Chase)
+        if (_player != null && CurrentState == EnemyState.Chase)
         {
             float distanceToPlayer = GlobalPosition.DistanceTo(_player.GlobalPosition);
 
@@ -48,7 +48,7 @@ public partial class ArcherEnemy : EnemyController
             // In preferred range? Stop and shoot
             else if (distanceToPlayer <= PreferredRange)
             {
-                CurrentState = AIState.Attack;
+                CurrentState = EnemyState.Attack;
                 Velocity = Vector2.Zero;
             }
         }
@@ -61,7 +61,7 @@ public partial class ArcherEnemy : EnemyController
         if (_player == null || !_canAttack) return;
 
         _canAttack = false;
-        _attackTimer = AttackCooldown;
+        _attackTimer.Start();
 
         // Shoot projectile
         ShootProjectile();
@@ -97,7 +97,7 @@ public partial class ArcherEnemy : EnemyController
         // If in attack range, attack instead
         if (distance <= AttackRange && distance >= MinRange)
         {
-            CurrentState = AIState.Attack;
+            CurrentState = EnemyState.Attack;
             return;
         }
 

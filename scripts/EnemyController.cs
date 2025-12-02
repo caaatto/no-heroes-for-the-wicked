@@ -25,13 +25,20 @@ public partial class EnemyController : CharacterBody2D
     [Export] public EnemyState CurrentState { get; set; } = EnemyState.Idle;
 
     // Components
-    private AnimatedSprite2D _animatedSprite;
-    private Timer _attackTimer;
-    private PlayerController _player;
+    protected AnimatedSprite2D _animatedSprite;
+    protected Timer _attackTimer;
+    protected PlayerController _player;
 
     // Combat
-    private bool _canAttack = true;
-    private float _attackCooldown = 1.0f;
+    protected bool _canAttack = true;
+    protected float _attackCooldown = 1.0f;
+
+    // Property for accessing attack cooldown
+    public float AttackCooldown
+    {
+        get => _attackCooldown;
+        set => _attackCooldown = value;
+    }
 
     // Patrol (optional)
     private Vector2 _patrolStartPosition;
@@ -94,7 +101,7 @@ public partial class EnemyController : CharacterBody2D
         UpdateAnimation();
     }
 
-    private void UpdateIdle()
+    protected virtual void UpdateIdle()
     {
         Velocity = Vector2.Zero;
 
@@ -106,7 +113,7 @@ public partial class EnemyController : CharacterBody2D
         }
     }
 
-    private void UpdatePatrol()
+    protected virtual void UpdatePatrol()
     {
         // Simple patrol behavior
         if (GlobalPosition.DistanceTo(_patrolTarget) < 10.0f)
@@ -130,7 +137,7 @@ public partial class EnemyController : CharacterBody2D
         }
     }
 
-    private void UpdateChase()
+    protected virtual void UpdateChase()
     {
         if (_player == null || !_player.IsAlive())
         {
@@ -160,7 +167,7 @@ public partial class EnemyController : CharacterBody2D
         Velocity = direction * MoveSpeed;
     }
 
-    private void UpdateAttack()
+    protected virtual void UpdateAttack()
     {
         if (_player == null || !_player.IsAlive())
         {
@@ -182,11 +189,11 @@ public partial class EnemyController : CharacterBody2D
         // Attack
         if (_canAttack)
         {
-            Attack(_player);
+            AttackPlayer();
         }
     }
 
-    private bool IsPlayerInRange(float range)
+    protected bool IsPlayerInRange(float range)
     {
         if (_player == null)
             return false;
@@ -212,7 +219,26 @@ public partial class EnemyController : CharacterBody2D
         }
     }
 
-    public void TakeDamage(int damage)
+    /// <summary>
+    /// Virtual method for attacking the player - can be overridden by subclasses
+    /// </summary>
+    protected virtual void AttackPlayer()
+    {
+        if (_player != null && _player.IsAlive())
+        {
+            Attack(_player);
+        }
+    }
+
+    /// <summary>
+    /// Virtual method for chasing the player - can be overridden by subclasses
+    /// </summary>
+    protected virtual void ChasePlayer()
+    {
+        UpdateChase();
+    }
+
+    public virtual void TakeDamage(int damage)
     {
         CurrentLifePoints -= damage;
         GD.Print($"{EnemyName} takes {damage} damage. Remaining HP: {CurrentLifePoints}");
@@ -229,7 +255,7 @@ public partial class EnemyController : CharacterBody2D
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         GD.Print($"{EnemyName} has been defeated!");
         CurrentState = EnemyState.Dead;
@@ -253,7 +279,7 @@ public partial class EnemyController : CharacterBody2D
         _canAttack = true;
     }
 
-    private void UpdateAnimation()
+    protected virtual void UpdateAnimation()
     {
         if (_animatedSprite == null || !IsAlive)
             return;

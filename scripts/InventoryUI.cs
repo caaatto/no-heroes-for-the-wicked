@@ -305,7 +305,7 @@ public partial class InventoryUI : CanvasLayer
             if (item != null)
             {
                 UpdateItemDetails(item);
-                _equipButton.Disabled = item.Type != InventorySystem.ItemType.Weapon;
+                _equipButton.Disabled = item.Type != ItemType.Weapon;
                 _dropButton.Disabled = false;
             }
         }
@@ -331,21 +331,15 @@ public partial class InventoryUI : CanvasLayer
     /// <summary>
     /// Update item details display
     /// </summary>
-    private void UpdateItemDetails(InventorySystem.InventoryItem item)
+    private void UpdateItemDetails(Item item)
     {
-        _descriptionLabel.Text = $"{item.Name}\n{item.Type}";
+        _descriptionLabel.Text = $"{item.Name}\n{item.Description}\n{item.Type}";
 
-        if (item.Type == InventorySystem.ItemType.Weapon)
+        if (item.Type == ItemType.Weapon)
         {
-            string stats = $"Damage: {item.DamageNotation}\n";
-            stats += $"Stat Modifier: {item.StatModifier}\n";
+            string stats = $"Damage: {item.DamageDice}\n";
+            stats += $"Stat: {item.DamageStat}\n";
             stats += $"Rarity: {item.Rarity}";
-
-            if (!string.IsNullOrEmpty(item.Element))
-                stats += $"\nElement: {item.Element}";
-
-            if (!string.IsNullOrEmpty(item.SpecialProperty))
-                stats += $"\nSpecial: {item.SpecialProperty}";
 
             _statsLabel.Text = stats;
         }
@@ -368,9 +362,9 @@ public partial class InventoryUI : CanvasLayer
         if (_selectedSlotIndex < 0 || _inventorySystem == null) return;
 
         var item = _itemSlots[_selectedSlotIndex].GetItem();
-        if (item != null && item.Type == InventorySystem.ItemType.Weapon)
+        if (item != null && item.Type == ItemType.Weapon)
         {
-            _inventorySystem.EquipWeapon(item.Name);
+            _inventorySystem.EquipWeapon(item);
             _audioManager?.PlaySfx("item_equip");
             EmitSignal(SignalName.ItemEquipped, item.Name);
         }
@@ -383,7 +377,7 @@ public partial class InventoryUI : CanvasLayer
         var item = _itemSlots[_selectedSlotIndex].GetItem();
         if (item != null)
         {
-            _inventorySystem.RemoveItem(item.Name);
+            _inventorySystem.RemoveItem(item);
             _audioManager?.PlaySfx("button_click");
             EmitSignal(SignalName.ItemDropped, _selectedSlotIndex);
             RefreshInventory();
@@ -395,15 +389,18 @@ public partial class InventoryUI : CanvasLayer
 
     #region Signal Handlers
 
-    private void OnInventoryChanged(string itemName)
+    private void OnInventoryChanged(Item item)
     {
         RefreshInventory();
     }
 
-    private void OnWeaponEquipped(string weaponName)
+    private void OnWeaponEquipped(Item weapon)
     {
         RefreshInventory();
-        GD.Print($"[InventoryUI] Weapon equipped: {weaponName}");
+        if (weapon != null)
+        {
+            GD.Print($"[InventoryUI] Weapon equipped: {weapon.Name}");
+        }
     }
 
     #endregion
@@ -418,7 +415,7 @@ public partial class InventorySlot : Panel
     public delegate void SlotClickedEventHandler(int slotIndex);
 
     private int _slotIndex;
-    private InventorySystem.InventoryItem _item;
+    private Item _item;
     private Label _itemLabel;
     private Panel _highlightPanel;
     private bool _isSelected = false;
@@ -471,7 +468,7 @@ public partial class InventorySlot : Panel
         }
     }
 
-    public void SetItem(InventorySystem.InventoryItem item)
+    public void SetItem(Item item)
     {
         _item = item;
         if (item != null)
@@ -503,7 +500,7 @@ public partial class InventorySlot : Panel
         _highlightPanel.Visible = selected;
     }
 
-    public InventorySystem.InventoryItem GetItem()
+    public Item GetItem()
     {
         return _item;
     }

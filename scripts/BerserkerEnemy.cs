@@ -82,7 +82,7 @@ public partial class BerserkerEnemy : EnemyController
         // Enraged attacks are faster
         if (_isEnraged)
         {
-            _attackTimer *= 0.8f; // 20% faster attacks
+            _attackTimer.WaitTime *= 0.8f; // 20% faster attacks
         }
     }
 }

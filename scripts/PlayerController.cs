@@ -180,6 +180,13 @@ public partial class PlayerController : CharacterBody2D
         return CurrentLifePoints > 0;
     }
 
+    public float GetHealthPercentage()
+    {
+        if (MaxLifePoints <= 0)
+            return 0f;
+        return (float)CurrentLifePoints / MaxLifePoints;
+    }
+
     private void Die()
     {
         GD.Print($"{PlayerName} has been defeated!");

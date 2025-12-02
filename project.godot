@@ -13,8 +13,16 @@ config_version=5
 config/name="No Heroes for the Wicked"
 config/description="Ein storygetriebenes 2D-Action-Adventure (Pixelart)"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+LocalizationManager="*res://scripts/LocalizationManager.cs"
+AudioManager="*res://scripts/AudioManager.cs"
+InventorySystem="*res://scripts/InventorySystem.cs"
+QuestSystem="*res://scripts/QuestSystem.cs"
+SaveLoadSystem="*res://scripts/SaveLoadSystem.cs"
 
 [display]
 
@@ -26,14 +34,6 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="NoHeroesForTheWicked"
-
-[autoload]
-
-LocalizationManager="*res://scripts/LocalizationManager.cs"
-AudioManager="*res://scripts/AudioManager.cs"
-InventorySystem="*res://scripts/InventorySystem.cs"
-QuestSystem="*res://scripts/QuestSystem.cs"
-SaveLoadSystem="*res://scripts/SaveLoadSystem.cs"
 
 [input]
 
