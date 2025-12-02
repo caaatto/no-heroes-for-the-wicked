@@ -106,6 +106,10 @@ quick_load={
 2d_physics/layer_3="Environment"
 2d_physics/layer_4="Items"
 
+[gui]
+
+theme/custom="res://theme/default_theme.tres"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
