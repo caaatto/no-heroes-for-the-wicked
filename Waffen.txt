@@ -1,20 +1,58 @@
-Stuhlbein 1d6 Str
-Krug 1d4 Dex
-Tischbein 1d6 Str
-Glasflasche 1d4 Dex
-kaputte_T�re 1d8 Str
-Kettenpeitsche 1d6 Dex
-Hufeisen 1d4 Dex
-Kerze 2d4 Wis
-rostiges_Schwert 1d8 Str
-Hammer 1d6 Str
-laute_Stimme 1d2 Chr
-Morgenstern 1d8 Str
-Bartschl�ssel 2d2 Dex
-Fassdeckel 1d4 Str
-Eiseneimer 1d6 Str
-Heugabel 1d6 Str
-Mistgabel 1d6 Str
-Sense 1d6 Chr
-�llampe 2d4 Str
-Kleines_Kind_Am_Fuss_gepackt 1d8 Str
+// Waffenliste - No Heroes for the Wicked
+// Synchronisiert mit data/weapons.json
+// Format: Name | Schaden | Attribut | Seltenheit | Besonderheiten
+
+=== GEWÖHNLICHE WAFFEN (Common) ===
+Stuhlbein | 1d6 | Str | Common
+Krug | 1d4 | Dex | Common
+Tischbein | 1d6 | Str | Common
+Glasflasche | 1d4 | Dex | Common
+Hufeisen | 1d4 | Dex | Common
+Hammer | 1d6 | Str | Common
+Laute Stimme | 1d2 | Chr | Common | psychic damage
+Bartschlüssel | 2d2 | Dex | Common
+Fassdeckel | 1d4 | Str | Common | +1 Defense
+Eiseneimer | 1d6 | Str | Common
+Heugabel | 1d6 | Str | Common
+Mistgabel | 1d6 | Str | Common
+Besen | 1d4 | Dex | Common
+Sichel | 1d6 | Dex | Common
+Eisenstange | 1d6 | Str | Common
+Armbrustbolzen | 1d8 | Dex | Common
+Brennende Fackel | 1d6 | Str | Common | Fire
+
+=== UNGEWÖHNLICHE WAFFEN (Uncommon) ===
+Kaputte Türe | 1d8 | Str | Uncommon
+Kettenpeitsche | 1d6 | Dex | Uncommon
+Kerze | 2d4 | Wis | Uncommon | Fire
+Rostiges Schwert | 1d8 | Str | Uncommon
+Sense | 1d6 | Chr | Uncommon | Intimidation
+Öllampe | 2d4 | Str | Uncommon | Fire + Explosion
+Schwere Eisenpfanne | 1d8 | Str | Uncommon | Stun Chance
+Holzfälleraxt | 1d10 | Str | Uncommon
+Spitzhacke | 1d8 | Str | Uncommon | Armor Pierce
+Hirschgeweih | 1d6 | Str | Uncommon
+Menschenknochen | 1d4 | Chr | Uncommon | Fear Effect
+Brandeisen | 1d6 | Str | Uncommon | Fire + Burn
+Fleischerhaken | 1d8 | Str | Uncommon | Bleed Effect
+Wurfstern | 1d4 | Dex | Uncommon
+Lederpeitsche | 1d6 | Dex | Uncommon | Pull Effect
+
+=== SELTENE WAFFEN (Rare) ===
+Morgenstern | 1d8 | Str | Rare
+Schwere Bibel | 1d6 | Wis | Rare | Holy + Undead Bonus
+Zweihänder | 2d6 | Str | Rare
+Rapier | 1d8 | Dex | Rare | Critical Chance
+Streitkolben | 1d10 | Str | Rare | Armor Pierce
+Giftdolch | 1d4 | Dex | Rare | Poison DoT
+Dreschflegel | 1d10 | Str | Rare | Knockback
+Zerbrochener Zauberstab | 2d4 | Wis | Rare | Arcane
+Kriegshammer | 2d6 | Str | Rare | Knockback
+
+=== LEGENDÄRE WAFFEN (Legendary) ===
+Kleines Kind am Fuß gepackt | 1d8 | Str | Legendary | Screaming Debuff
+Schrottflinte | 2d6 | Dex | Legendary | Scatter Damage
+Grimoire der Schatten | 2d6 | Wis | Legendary | Shadow + Mana Drain
+
+// GESAMT: 45 Waffen
+// Common: 17 | Uncommon: 15 | Rare: 10 | Legendary: 3
