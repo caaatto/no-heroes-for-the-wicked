@@ -21,8 +21,7 @@ public partial class BossController : EnemyController
     [Export] public string[] LootTable { get; set; } = Array.Empty<string>();
 
     // UI Elements
-    private ProgressBar _bossHealthBar;
-    private Label _bossNameLabel;
+    private BossHealthUI _bossHealthUI;
 
     public override void _Ready()
     {
@@ -37,7 +36,8 @@ public partial class BossController : EnemyController
         GD.Print($"Attack: {AttackValue}");
         GD.Print($"Speed: {MoveSpeed}");
 
-        ShowBossUI();
+        // Defer UI setup to ensure scene is ready
+        CallDeferred(MethodName.ShowBossUI);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -52,8 +52,6 @@ public partial class BossController : EnemyController
         {
             TriggerEnrage();
         }
-
-        UpdateBossUI();
     }
 
     protected virtual void CheckPhaseTransition()
@@ -72,6 +70,13 @@ public partial class BossController : EnemyController
     protected virtual void OnPhaseChange(int newPhase)
     {
         GD.Print($"{BossTitle} enters Phase {newPhase}!");
+
+        // Notify UI
+        if (_bossHealthUI != null)
+        {
+            _bossHealthUI.OnPhaseChanged(newPhase, PhaseCount);
+        }
+
         // Override in derived classes for phase-specific behavior
     }
 
@@ -100,17 +105,32 @@ public partial class BossController : EnemyController
 
     private void ShowBossUI()
     {
-        // TODO: Create and display boss health bar UI
-        GD.Print($"Displaying boss UI for: {BossTitle}");
+        // Find or create boss health UI
+        _bossHealthUI = GetTree().Root.GetNodeOrNull<BossHealthUI>("BossHealthUI");
+
+        if (_bossHealthUI == null)
+        {
+            // Create new boss health UI
+            _bossHealthUI = new BossHealthUI();
+            _bossHealthUI.Name = "BossHealthUI";
+            GetTree().Root.AddChild(_bossHealthUI);
+            GD.Print("[BossController] Created new BossHealthUI");
+        }
+
+        // Show this boss
+        _bossHealthUI.ShowBoss(this);
+        GD.Print($"[BossController] Displaying boss UI for: {BossTitle}");
     }
 
-    private void UpdateBossUI()
+    protected override void Die()
     {
-        // TODO: Update boss health bar
-        if (_bossHealthBar != null)
+        // Hide boss UI when boss dies
+        if (_bossHealthUI != null)
         {
-            _bossHealthBar.Value = GetHealthPercentage() * 100;
+            _bossHealthUI.Hide();
         }
+
+        base.Die();
     }
 
     protected void SpawnMinion(PackedScene minionScene, Vector2 offset)

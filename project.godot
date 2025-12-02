@@ -35,6 +35,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="NoHeroesForTheWicked"
 
+[gui]
+
+theme/custom="res://theme/default_theme.tres"
+
 [input]
 
 move_left={
@@ -105,10 +109,6 @@ quick_load={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Environment"
 2d_physics/layer_4="Items"
-
-[gui]
-
-theme/custom="res://theme/default_theme.tres"
 
 [rendering]
 

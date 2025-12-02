@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://necromancer_boss_001"]
+[gd_scene load_steps=3 format=3 uid="uid://necromancer_boss_001"]
 
 [ext_resource type="Script" path="res://scripts/NecromancerBoss.cs" id="1"]
 
-[node name="NecromancerBoss" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_necro"]
+radius = 20.0
+height = 50.0
+
+[node name="NecromancerBoss" type="CharacterBody2D" groups=["enemies", "bosses"]]
 script = ExtResource("1")
 collision_layer = 2
 collision_mask = 5
@@ -19,9 +23,12 @@ shape = SubResource("CapsuleShape2D_necro")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
+modulate = Color(0.4, 0.8, 0.4, 1)
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -30.0
-offset_top = -50.0
-offset_right = 30.0
-offset_bottom = -45.0
+[node name="VisualPlaceholder" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 35.0
+color = Color(0.3, 0.6, 0.3, 1)
+metadata/_edit_lock_ = true

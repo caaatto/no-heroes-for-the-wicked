@@ -18,7 +18,8 @@ public partial class NecromancerBoss : BossController
 
     private Timer _summonTimer;
     private bool _canSummon = true;
-    private List<Node> _minions = new List<Node>();
+    private List<MinionEnemy> _minions = new List<MinionEnemy>();
+    private PackedScene _minionScene;
 
     // Life drain
     private Timer _drainTimer;
@@ -55,6 +56,13 @@ public partial class NecromancerBoss : BossController
         PhaseCount = 3;
 
         base._Ready();
+
+        // Load minion scene
+        _minionScene = GD.Load<PackedScene>("res://scenes/enemy_minion.tscn");
+        if (_minionScene == null)
+        {
+            GD.PrintErr("[NecromancerBoss] Failed to load minion scene!");
+        }
 
         // Setup summon timer
         _summonTimer = new Timer();
@@ -260,6 +268,12 @@ public partial class NecromancerBoss : BossController
     {
         if (_minions.Count >= MaxMinions) return;
 
+        if (_minionScene == null)
+        {
+            GD.PrintErr("[NecromancerBoss] Cannot summon minion: scene not loaded!");
+            return;
+        }
+
         _canSummon = false;
         _summonTimer.Start();
 
@@ -271,19 +285,17 @@ public partial class NecromancerBoss : BossController
 
         GD.Print($"{BossTitle} summons a minion! ({_minions.Count + 1}/{MaxMinions})");
 
-        // TODO: Spawn actual minion enemy scene
-        // For now, create a placeholder node
-        var minion = new Node2D();
-        minion.Name = $"Minion_{_minions.Count}";
+        // Instantiate minion
+        var minion = _minionScene.Instantiate<MinionEnemy>();
         minion.GlobalPosition = GlobalPosition + offset;
+        minion.Master = this;
+        minion.Name = $"Minion_{_minions.Count}";
+
+        // Add to scene tree
         GetParent().AddChild(minion);
         _minions.Add(minion);
 
-        // TODO: Minion would be a simplified EnemyController with:
-        // - Low HP (20)
-        // - Weak damage (5)
-        // - Medium speed (100)
-        // - Links to necromancer on death
+        GD.Print($"[NecromancerBoss] Spawned minion at {minion.GlobalPosition}");
     }
 
     private void OnSummonCooldownTimeout()

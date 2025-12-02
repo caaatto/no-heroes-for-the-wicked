@@ -32,6 +32,9 @@ public partial class RangedBoss : BossController
     private List<Vector2> _hazardZones = new List<Vector2>();
     private const int MaxHazardZones = 5;
 
+    // Projectile scene
+    private PackedScene _projectileScene;
+
     public override void _Ready()
     {
         // Ranged stats
@@ -46,6 +49,13 @@ public partial class RangedBoss : BossController
         PhaseCount = 3;
 
         base._Ready();
+
+        // Load projectile scene
+        _projectileScene = GD.Load<PackedScene>("res://scenes/projectile.tscn");
+        if (_projectileScene == null)
+        {
+            GD.PrintErr("[RangedBoss] Failed to load projectile scene!");
+        }
 
         // Setup projectile timer
         _projectileTimer = new Timer();
@@ -265,25 +275,25 @@ public partial class RangedBoss : BossController
 
     private void ShootProjectile(Vector2 direction)
     {
+        if (_projectileScene == null)
+        {
+            GD.PrintErr("[RangedBoss] Cannot shoot projectile: scene not loaded!");
+            return;
+        }
+
         GD.Print($"{BossTitle} shoots a projectile!");
 
-        // TODO: Instantiate actual projectile scene
-        // For now, do instant raycast-style damage
-        // In full implementation, this would spawn a projectile node
+        // Instantiate projectile
+        var projectile = _projectileScene.Instantiate<Projectile>();
+        projectile.GlobalPosition = GlobalPosition;
+        projectile.Speed = ProjectileSpeed;
+        projectile.Damage = ProjectileDamage;
+        projectile.IsPlayerProjectile = false;
+        projectile.ProjectileColor = new Color(0.5f, 0.2f, 0.8f); // Purple for Arcane Sorcerer
+        projectile.SetDirection(direction);
 
-        // Simulate projectile with raycast
-        var spaceState = GetWorld2D().DirectSpaceState;
-        var query = PhysicsRayQueryParameters2D.Create(
-            GlobalPosition,
-            GlobalPosition + direction * AttackRange
-        );
-        query.CollisionMask = 1; // Player layer
-
-        var result = spaceState.IntersectRay(query);
-        if (result.Count > 0 && result["collider"].Obj is PlayerController player)
-        {
-            player.TakeDamage(ProjectileDamage);
-        }
+        // Add to scene tree (add to parent so it's independent of boss)
+        GetParent().AddChild(projectile);
     }
 
     private void OnProjectileCooldownTimeout()
